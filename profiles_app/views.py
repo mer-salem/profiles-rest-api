@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
-# Create your views here.
+
+class HelloApiView(APIView):
+
+    def get(self, request, fomat=None):
+
+        api_list = ['veza', 'omar', 'hemana']
+        return Response({'message': api_list})
