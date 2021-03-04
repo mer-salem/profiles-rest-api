@@ -8,7 +8,9 @@ router = DefaultRouter()
 router.register('hello-viewsets', views.HelloViewsets,
                 base_name='hello-viewsets')
 
-urlpatterns = [path('hello-view/', views.HelloApiView.as_view()),
-               path('', include(router.urls)),
 
-               ]
+urlpatterns = [
+    path('hello-view/', views.HelloApiView.as_view()),
+    path('', include(router.urls)),
+
+]
