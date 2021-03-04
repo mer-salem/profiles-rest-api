@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from profiles_app import serializers
-from rest_framework import status
+from rest_framework import status, viewsets
 
 
 class HelloApiView(APIView):
@@ -30,3 +30,10 @@ class HelloApiView(APIView):
             return Response({'message': message})
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class HelloViewsets(viewsets.ViewSet):
+
+    def list(self, request):
+        api_list = ['veza', 'omar', 'hemana']
+        return Response({'message': 'hello', 'api_list': api_list})
