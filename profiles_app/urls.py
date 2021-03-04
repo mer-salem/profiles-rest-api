@@ -6,7 +6,8 @@ from django.urls import path, re_path, include
 
 router = DefaultRouter()
 router.register('hello-viewsets', views.HelloViewsets,
-                base_name='hello-viewsets')
+                basename='hello-viewsets')
+router.register('profile', views.UserProfileViewsets)
 
 
 urlpatterns = [

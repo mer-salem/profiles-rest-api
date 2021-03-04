@@ -1,7 +1,12 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from profiles_app import serializers
+from profiles_app import serializers, models
 from rest_framework import status, viewsets
+
+
+class UserProfileViewsets(viewsets.ModelViewSet):
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
 
 
 class HelloApiView(APIView):
@@ -47,7 +52,7 @@ class HelloViewsets(viewsets.ViewSet):
             message = f'Hello {name}'
             return Response({'message': message})
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'bbbb': 'serializer.errors, status=status.HTTP_400_BAD_REQUEST'})
 
     def retrive(self, request, pk=None):
         return Response({'message': 'retrive'})
@@ -59,4 +64,4 @@ class HelloViewsets(viewsets.ViewSet):
         return Response({'message': 'partial_update'})
 
     def destroy(self, request, pk=None):
-        return Response({'message': 'destroy'})
+        return Response({'message': 'destroy1'})
