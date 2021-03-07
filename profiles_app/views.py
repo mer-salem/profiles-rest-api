@@ -4,6 +4,12 @@ from profiles_app import serializers, models
 from rest_framework import status, viewsets, filters
 from rest_framework.authentication import TokenAuthentication
 from profiles_app import permissions
+from rest_framework.settings import api_settings
+from rest_framework.authtoken.views import ObtainAuthToken
+
+
+class UserLoginApiView(ObtainAuthToken):
+    renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 
 class UserProfileViewsets(viewsets.ModelViewSet):
