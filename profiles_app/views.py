@@ -2,14 +2,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from profiles_app import serializers, models
 from rest_framework import status, viewsets
+from rest_framework.authentication import TokenAuthentication
+from profiles_app import permissions
 
 
 class UserProfileViewsets(viewsets.ModelViewSet):
     serializer_class = serializers.UserProfileSerializer
     queryset = models.UserProfile.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (permissions.updateOwnerProfile,)
 
 
 class HelloApiView(APIView):
+
     serializer_class = serializers.SerializerHelloApi
 
     def get(self, request, fomat=None):
@@ -38,6 +43,7 @@ class HelloApiView(APIView):
 
 
 class HelloViewsets(viewsets.ViewSet):
+
     serializer_class = serializers.SerializerHelloApi
 
     def list(self, request):
