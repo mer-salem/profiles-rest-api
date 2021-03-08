@@ -8,6 +8,7 @@ router = DefaultRouter()
 router.register('hello-viewsets', views.HelloViewsets,
                 basename='hello-viewsets')
 router.register('profile', views.UserProfileViewsets)
+router.register('feed', views.ProfileFeedItemViewsets)
 
 
 urlpatterns = [
